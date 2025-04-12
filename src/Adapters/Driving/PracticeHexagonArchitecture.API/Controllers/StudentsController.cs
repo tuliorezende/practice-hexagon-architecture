@@ -1,3 +1,4 @@
+using Domain.Dto;
 using Domain.Entities;
 using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -30,11 +31,11 @@ public class StudentsController : ControllerBase
     /// <summary>
     /// Create a Student
     /// </summary>
-    /// <param name="student"></param>
+    /// <param name="studentDto"></param>
     /// <returns></returns>
     [HttpPost]
-    public async Task<IActionResult> Post(Student student)
+    public async Task<IActionResult> Post([FromBody] StudentDto studentDto)
     {
-        return Ok(await _studentManager.CreateStudentAsync(student));
+        return Ok(await _studentManager.CreateStudentAsync(studentDto));
     }
 }

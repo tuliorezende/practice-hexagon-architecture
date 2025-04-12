@@ -1,4 +1,5 @@
 using Domain.Adapters;
+using Domain.Dto;
 using Domain.Entities;
 using Domain.Services;
 
@@ -13,8 +14,10 @@ public class StudentManager : IStudentManager
         _studentRepository = studentRepository;
     }
 
-    public async Task<string> CreateStudentAsync(Student student)
+    public async Task<string> CreateStudentAsync(StudentDto studentDto)
     {
+        var student = new Student(studentDto);
+
         var studentId = await _studentRepository.CreateStudentAsync(student);
         return studentId;
     }
@@ -29,9 +32,9 @@ public class StudentManager : IStudentManager
         return null;
     }
 
-    public async Task<IEnumerable<Student>> GetStudentsAsync(int skip = 0, int take = 10)
+    public async Task<List<StudentDto>> GetStudentsAsync(int skip = 0, int take = 10)
     {
-        var students = await _studentRepository.GetStudentsAsync(skip, take);
+        var students = (await _studentRepository.GetStudentsAsync(skip, take)).ConvertAll(s => new StudentDto(s));
         return students;
     }
 }

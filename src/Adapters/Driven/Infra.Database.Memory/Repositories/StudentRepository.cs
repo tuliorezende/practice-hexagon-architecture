@@ -12,9 +12,9 @@ public class StudentRepository : IStudentRepository
         _students = new List<Student>();
     }
 
-    public async Task<IEnumerable<Student>> GetStudentsAsync(int skip = 0, int take = 10)
+    public async Task<List<Student>> GetStudentsAsync(int skip = 0, int take = 10)
     {
-        return _students.Skip(skip).Take(take);
+        return _students.Skip(skip).Take(take).ToList();
     }
 
     public async Task<string> CreateStudentAsync(Student student)

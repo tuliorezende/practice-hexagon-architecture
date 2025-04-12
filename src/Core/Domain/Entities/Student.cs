@@ -1,3 +1,4 @@
+using Domain.Dto;
 using Domain.ValueObjects;
 
 namespace Domain.Entities;
@@ -14,5 +15,12 @@ public class Student
         this.Name = name;
         this.Address = address;
         this.PersonalDocument = personalDocument;
+    }
+
+    public Student(StudentDto studentDto)
+    {
+        this.Name = studentDto.Name;
+        this.Address = studentDto.Address;
+        this.PersonalDocument = studentDto.PersonalDocument;
     }
 }
