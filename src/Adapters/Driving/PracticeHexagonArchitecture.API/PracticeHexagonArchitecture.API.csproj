@@ -13,6 +13,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\..\Core\Application\Application.csproj" />
       <ProjectReference Include="..\..\..\Core\Domain\Domain.csproj" />
+      <ProjectReference Include="..\..\Driven\Infra.Database.Memory\Infra.Database.Memory.csproj" />
       <ProjectReference Include="..\..\Driven\Infra.Database.SqlServer\Infra.Database.SqlServer.csproj" />
     </ItemGroup>
 

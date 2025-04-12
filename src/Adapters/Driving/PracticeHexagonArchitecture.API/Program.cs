@@ -1,3 +1,8 @@
+using Application.Services;
+using Domain.Adapters;
+using Domain.Services;
+using Infra.Database.Memory.Repositories;
+
 namespace PracticeHexagonArchitecture.API;
 
 public class Program
@@ -13,6 +18,9 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
+        builder.Services.AddSingleton<IStudentManager, StudentManager>();
+        builder.Services.AddSingleton<IStudentRepository, StudentRepository>();
+        
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
