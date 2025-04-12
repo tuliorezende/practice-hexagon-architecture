@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Database.SqlServer", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticeHexagonArchitecture.API", "src\Adapters\Driving\PracticeHexagonArchitecture.API\PracticeHexagonArchitecture.API.csproj", "{37AA294E-99E7-44C7-B7F8-5832F07B0F35}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Database.Memory", "src\Adapters\Driven\Infra.Database.Memory\Infra.Database.Memory.csproj", "{66A2AD2A-B14A-497B-BED3-A38B7A9ED6C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,7 @@ Global
 		{E3189D99-605B-47E5-81D1-7739E9C27AB7} = {932069B8-156C-4C56-BE83-81662DE8688C}
 		{3AD2B6D3-1A4C-495B-A2C1-79FEF35C3FB4} = {626AC0B8-98AF-4250-984B-AB5A610ECFF1}
 		{37AA294E-99E7-44C7-B7F8-5832F07B0F35} = {045B1B02-0900-4702-B8FF-F38ECB6E25F6}
+		{66A2AD2A-B14A-497B-BED3-A38B7A9ED6C6} = {626AC0B8-98AF-4250-984B-AB5A610ECFF1}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{AB4C8366-0083-45A7-AABC-657AA315C03A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -50,5 +53,9 @@ Global
 		{37AA294E-99E7-44C7-B7F8-5832F07B0F35}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37AA294E-99E7-44C7-B7F8-5832F07B0F35}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37AA294E-99E7-44C7-B7F8-5832F07B0F35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66A2AD2A-B14A-497B-BED3-A38B7A9ED6C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66A2AD2A-B14A-497B-BED3-A38B7A9ED6C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66A2AD2A-B14A-497B-BED3-A38B7A9ED6C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66A2AD2A-B14A-497B-BED3-A38B7A9ED6C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
