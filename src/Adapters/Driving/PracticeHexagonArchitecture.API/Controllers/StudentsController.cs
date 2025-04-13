@@ -13,14 +13,12 @@ namespace PracticeHexagonArchitecture.API.Controllers;
 public class StudentsController : ControllerBase
 {
     private readonly IStudentManager _studentManager;
-    private readonly IAcademicalHistoryManager _academicalHistoryManager;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-    public StudentsController(IStudentManager studentManager, IAcademicalHistoryManager academicalHistoryManager)
+    public StudentsController(IStudentManager studentManager)
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
         _studentManager = studentManager;
-        _academicalHistoryManager = academicalHistoryManager;
     }
 
     #region Students Operations
@@ -83,6 +81,17 @@ public class StudentsController : ControllerBase
     #region Academical History Operations
 
     /// <summary>
+    /// Get Academical history from a student
+    /// </summary>
+    /// <param name="studentId"></param>
+    /// <returns></returns>
+    [HttpGet("{studentId}/academicalHistory")]
+    public async Task<IActionResult> GetAcademicalHistory(string studentId)
+    {
+        return Ok(await _studentManager.GetAcademicalHistoryFromStudentAsync(studentId));
+    }
+
+    /// <summary>
     /// Create an academical history entry on database
     /// </summary>
     /// <param name="studentId"></param>
@@ -91,7 +100,8 @@ public class StudentsController : ControllerBase
     [HttpPost("{studentId}/academicalHistory")]
     public async Task<IActionResult> PostAcademicalHistory(string studentId, AcademicalHistory academicalHistory)
     {
-        await _academicalHistoryManager.AddAcademicalHistoryAsync(studentId, academicalHistory);
+        await _studentManager.CreateAcademicalHistoryAsyncEntryAsync(studentId, academicalHistory);
+
         return Created();
     }
 

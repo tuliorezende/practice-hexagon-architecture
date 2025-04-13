@@ -10,7 +10,7 @@ public class Student
     public Address Address { get; private set; }
     public PersonalDocument PersonalDocument { get; private set; }
 
-    private List<AcademicalHistory> AcademicalHistory { get; set; }
+    public List<AcademicalHistory> AcademicalHistory { get; private set; }
 
     public Student(string name, Address address, PersonalDocument personalDocument)
     {

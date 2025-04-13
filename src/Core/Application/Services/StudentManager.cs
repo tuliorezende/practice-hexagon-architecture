@@ -14,6 +14,8 @@ public class StudentManager : IStudentManager
         _studentRepository = studentRepository;
     }
 
+    #region Student Crud Operations
+
     public async Task<string> CreateStudentAsync(StudentDto studentDto)
     {
         var student = new Student(studentDto);
@@ -25,9 +27,9 @@ public class StudentManager : IStudentManager
     public async Task<string> UpdateStudentAsync(StudentDto studentDto)
     {
         var student = new Student(studentDto);
-        
+
         var studentId = await _studentRepository.UpdateStudentAsync(student);
-        
+
         return studentId;
     }
 
@@ -47,4 +49,35 @@ public class StudentManager : IStudentManager
         var students = (await _studentRepository.GetStudentsAsync(skip, take)).ConvertAll(s => new StudentDto(s));
         return students;
     }
+
+    #endregion
+
+    #region Academical History Operations
+
+    public async Task<bool> CreateAcademicalHistoryAsyncEntryAsync(string studentId,
+        AcademicalHistory academicalHistory)
+    {
+        var student = await _studentRepository.GetStudentByIdAsync(studentId);
+
+        if (student is null)
+            return false;
+
+        student.AddAcademicalHistory(academicalHistory);
+
+        await _studentRepository.UpdateStudentAsync(student);
+
+        return true;
+    }
+
+    public async Task<List<AcademicalHistory>> GetAcademicalHistoryFromStudentAsync(string studentId)
+    {
+        var student = await _studentRepository.GetStudentByIdAsync(studentId);
+
+        if (student is null)
+            return null;
+
+        return student.AcademicalHistory;
+    }
+
+    #endregion
 }

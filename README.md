@@ -65,3 +65,16 @@ Fluxo da Aplicação
     - Driven/Repository
     - Driven/Operation
 ```
+
+## Relacionamentos
+### Como implementar
+
+Usando o conceito de agregados, a classe agregadora é responsável por "operar" as sub classes (independente do armazenamento)
+
+Como exemplo nessa implementação
+
+Student -> Classe agregadora
+AcademicalHistory -> Lista de entradas de histórico academico
+
+1. Criar métodos "externos" para operar a lista
+2. Usar o repositório do "Agregador" para operar os sub-objetos

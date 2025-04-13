@@ -27,9 +27,6 @@ public class Program
         builder.Services.AddSingleton<IStudentManager, StudentManager>();
         builder.Services.AddSingleton<IStudentRepository, StudentRepository>();
 
-        builder.Services.AddSingleton<IAcademicalHistoryRepository, AcademicalHistoryRepository>();
-        builder.Services.AddSingleton<IAcademicalHistoryManager, AcademicalHistoryManager>();
-
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
