@@ -14,7 +14,9 @@ public class StudentsController : ControllerBase
 {
     private readonly IStudentManager _studentManager;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public StudentsController(IStudentManager studentManager)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
         _studentManager = studentManager;
     }
@@ -43,7 +45,7 @@ public class StudentsController : ControllerBase
 
         if (student is null)
             return NotFound("Student not found");
-        
+
         return Ok(student);
     }
 
@@ -56,5 +58,18 @@ public class StudentsController : ControllerBase
     public async Task<IActionResult> Post([FromBody] StudentDto studentDto)
     {
         return Ok(await _studentManager.CreateStudentAsync(studentDto));
+    }
+
+    /// <summary>
+    /// Update a student
+    /// </summary>
+    /// <param name="studentId">ID to be updated</param>
+    /// <param name="studentDto">New object information</param>
+    /// <returns></returns>
+    [HttpPut("{studentId}")]
+    public async Task<IActionResult> Put(string studentId, [FromBody] StudentDto studentDto)
+    {
+        var updatedStudentId = await _studentManager.UpdateStudentAsync(studentDto);
+        return Ok(updatedStudentId);
     }
 }

@@ -7,8 +7,8 @@ namespace Domain.Services;
 public interface IStudentManager
 {
     Task<string> CreateStudentAsync(StudentDto studentDto);
-    
-    Task<string> UpdateStudentAsync(Student student);
+
+    Task<string> UpdateStudentAsync(StudentDto studentDto);
     
     Task<StudentDto?> GetStudentByIdAsync(string studentId);
     

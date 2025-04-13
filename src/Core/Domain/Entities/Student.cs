@@ -19,6 +19,9 @@ public class Student
 
     public Student(StudentDto studentDto)
     {
+        if (!string.IsNullOrEmpty(studentDto.Id))
+            this.Id = studentDto.Id;
+
         this.Name = studentDto.Name;
         this.Address = studentDto.Address;
         this.PersonalDocument = studentDto.PersonalDocument;

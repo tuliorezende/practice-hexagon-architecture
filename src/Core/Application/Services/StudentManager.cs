@@ -22,9 +22,13 @@ public class StudentManager : IStudentManager
         return studentId;
     }
 
-    public async Task<string> UpdateStudentAsync(Student student)
+    public async Task<string> UpdateStudentAsync(StudentDto studentDto)
     {
-        return "";
+        var student = new Student(studentDto);
+        
+        var studentId = await _studentRepository.UpdateStudentAsync(student);
+        
+        return studentId;
     }
 
     public async Task<StudentDto?> GetStudentByIdAsync(string studentId)

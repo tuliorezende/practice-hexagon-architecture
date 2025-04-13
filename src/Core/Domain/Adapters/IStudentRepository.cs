@@ -9,4 +9,6 @@ public interface IStudentRepository
     Task<string> CreateStudentAsync(Student student);
 
     Task<Student?> GetStudentByIdAsync(string studentId);
+    
+    Task <string> UpdateStudentAsync(Student student);
 }

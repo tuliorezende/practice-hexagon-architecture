@@ -29,4 +29,13 @@ public class StudentRepository : IStudentRepository
     {
         return _students.FirstOrDefault(s => s.Id == studentId);
     }
+
+    public async Task<string> UpdateStudentAsync(Student student)
+    {
+        var studentIndex = _students.FindIndex(s => s.Id == student.Id);
+        
+        _students[studentIndex] = student;
+        
+        return student.Id;
+    }
 }
