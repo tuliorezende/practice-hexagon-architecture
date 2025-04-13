@@ -27,9 +27,15 @@ public class StudentManager : IStudentManager
         return "";
     }
 
-    public async Task<Student> GetStudentByIdAsync(string studentId)
+    public async Task<StudentDto?> GetStudentByIdAsync(string studentId)
     {
-        return null;
+        var student = await _studentRepository.GetStudentByIdAsync(studentId);
+
+        if (student is null)
+            return null;
+
+        var studentDto = new StudentDto(student);
+        return studentDto;
     }
 
     public async Task<List<StudentDto>> GetStudentsAsync(int skip = 0, int take = 10)

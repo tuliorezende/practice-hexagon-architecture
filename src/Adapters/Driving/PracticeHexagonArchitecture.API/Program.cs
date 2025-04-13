@@ -1,3 +1,4 @@
+using System.Reflection;
 using Application.Services;
 using Domain.Adapters;
 using Domain.Services;
@@ -16,7 +17,12 @@ public class Program
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGen(options =>
+        {
+            // using System.Reflection;
+            var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+        });
 
         builder.Services.AddSingleton<IStudentManager, StudentManager>();
         builder.Services.AddSingleton<IStudentRepository, StudentRepository>();

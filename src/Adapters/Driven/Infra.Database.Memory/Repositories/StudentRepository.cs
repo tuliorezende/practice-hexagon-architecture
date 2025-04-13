@@ -1,4 +1,5 @@
 using Domain.Adapters;
+using Domain.Dto;
 using Domain.Entities;
 
 namespace Infra.Database.Memory.Repositories;
@@ -22,5 +23,10 @@ public class StudentRepository : IStudentRepository
         _students.Add(student);
 
         return student.Id;
+    }
+
+    public async Task<Student?> GetStudentByIdAsync(string studentId)
+    {
+        return _students.FirstOrDefault(s => s.Id == studentId);
     }
 }

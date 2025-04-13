@@ -10,7 +10,7 @@ public interface IStudentManager
     
     Task<string> UpdateStudentAsync(Student student);
     
-    Task<Student> GetStudentByIdAsync(string studentId);
+    Task<StudentDto?> GetStudentByIdAsync(string studentId);
     
     Task<List<StudentDto>> GetStudentsAsync(int skip = 0, int take = 10);
 }
