@@ -12,12 +12,19 @@ public class StudentDto
     [Required] public Address Address { get; private set; }
     [Required] public PersonalDocument PersonalDocument { get; private set; }
 
+    [Required] public Telephone Telephone { get; private set; }
+
+    [Required] public string Email { get; private set; }
+
     [JsonConstructor]
-    public StudentDto(string name, Address address, PersonalDocument personalDocument)
+    public StudentDto(string name, Address address, PersonalDocument personalDocument, Telephone telephone,
+        string email)
     {
         this.Name = name;
         this.Address = address;
         this.PersonalDocument = personalDocument;
+        this.Telephone = telephone;
+        this.Email = email;
     }
 
     public StudentDto(Student student)
@@ -26,5 +33,7 @@ public class StudentDto
         this.Name = student.Name;
         this.Address = student.Address;
         this.PersonalDocument = student.PersonalDocument;
+        this.Telephone = student.Telephone;
+        this.Email = student.Email;
     }
 }
