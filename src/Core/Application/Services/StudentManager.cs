@@ -24,13 +24,13 @@ public class StudentManager : IStudentManager
         return studentId;
     }
 
-    public async Task<string> UpdateStudentAsync(StudentDto studentDto)
+    public async Task<string> UpdateStudentAsync(string studentId, StudentDto studentDto)
     {
         var student = new Student(studentDto);
 
-        var studentId = await _studentRepository.UpdateStudentAsync(student);
+        var updatedId = await _studentRepository.UpdateStudentAsync(studentId, student);
 
-        return studentId;
+        return updatedId;
     }
 
     public async Task<StudentDto?> GetStudentByIdAsync(string studentId)
@@ -64,7 +64,7 @@ public class StudentManager : IStudentManager
 
         student.AddAcademicalHistory(academicalHistory);
 
-        await _studentRepository.UpdateStudentAsync(student);
+        await _studentRepository.UpdateStudentAsync(studentId, student);
 
         return true;
     }

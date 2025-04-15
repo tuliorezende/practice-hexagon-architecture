@@ -10,5 +10,5 @@ public interface IStudentRepository
 
     Task<Student?> GetStudentByIdAsync(string studentId);
     
-    Task <string> UpdateStudentAsync(Student student);
+    Task <string> UpdateStudentAsync(string studentId, Student student);
 }

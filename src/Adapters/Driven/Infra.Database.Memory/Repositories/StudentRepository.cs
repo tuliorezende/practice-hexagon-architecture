@@ -29,12 +29,17 @@ public class StudentRepository : IStudentRepository
         return _students.FirstOrDefault(s => s.Id == studentId);
     }
 
-    public async Task<string> UpdateStudentAsync(Student student)
+    public async Task<string> UpdateStudentAsync(string studentId, Student student)
     {
-        var studentIndex = _students.FindIndex(s => s.Id == student.Id);
-        
-        _students[studentIndex] = student;
-        
-        return student.Id;
+        var studentToUpdate = _students.FirstOrDefault(s => s.Id == studentId);
+
+        if (studentToUpdate == null)
+            return null;
+
+        var indexToUpdate = _students.IndexOf(studentToUpdate);
+
+        _students[indexToUpdate] = studentToUpdate.DeepClone(studentId, student);
+
+        return studentId;
     }
 }

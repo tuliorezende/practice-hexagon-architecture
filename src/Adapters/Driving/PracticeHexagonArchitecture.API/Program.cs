@@ -27,6 +27,9 @@ public class Program
         builder.Services.AddSingleton<IStudentManager, StudentManager>();
         builder.Services.AddSingleton<IStudentRepository, StudentRepository>();
 
+        builder.Services.AddSingleton<ITeacherManager, TeacherManager>();
+        builder.Services.AddSingleton<ITeacherRepository, TeacherRepository>();
+        
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.

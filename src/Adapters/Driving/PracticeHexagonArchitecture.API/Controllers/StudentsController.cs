@@ -72,7 +72,7 @@ public class StudentsController : ControllerBase
     [HttpPut("{studentId}")]
     public async Task<IActionResult> Put(string studentId, [FromBody] StudentDto studentDto)
     {
-        var updatedStudentId = await _studentManager.UpdateStudentAsync(studentDto);
+        var updatedStudentId = await _studentManager.UpdateStudentAsync(studentId, studentDto);
         return Ok(updatedStudentId);
     }
 

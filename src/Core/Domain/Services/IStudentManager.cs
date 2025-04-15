@@ -7,7 +7,7 @@ public interface IStudentManager
 {
     Task<string> CreateStudentAsync(StudentDto studentDto);
 
-    Task<string> UpdateStudentAsync(StudentDto studentDto);
+    Task<string> UpdateStudentAsync(string studentId, StudentDto studentDto);
 
     Task<StudentDto?> GetStudentByIdAsync(string studentId);
 

@@ -8,11 +8,11 @@ public class Student
     public string Id { get; private set; } = Guid.NewGuid().ToString();
     public string Name { get; private set; }
     public Address Address { get; private set; }
-    
+
     public Telephone Telephone { get; private set; }
-    
+
     public string Email { get; private set; }
-    
+
     public PersonalDocument PersonalDocument { get; private set; }
 
     public List<AcademicalHistory> AcademicalHistory { get; private set; }
@@ -29,7 +29,6 @@ public class Student
 
     public Student(StudentDto studentDto)
     {
-
         if (!string.IsNullOrEmpty(studentDto.Id))
             this.Id = studentDto.Id;
 
@@ -39,6 +38,10 @@ public class Student
         this.Telephone = studentDto.Telephone;
         this.Email = studentDto.Email;
         this.AcademicalHistory = new List<AcademicalHistory>();
+    }
+
+    public Student()
+    {
     }
 
     public bool AddAcademicalHistory(AcademicalHistory academicalHistory)
@@ -53,5 +56,19 @@ public class Student
 
         this.AcademicalHistory.Add(academicalHistory);
         return true;
+    }
+
+    public Student DeepClone(string studentId, Student student)
+    {
+        return new Student
+        {
+            Id = studentId,
+            Name = student.Name,
+            Address = student.Address,
+            PersonalDocument = student.PersonalDocument,
+            Telephone = student.Telephone,
+            Email = student.Email,
+            AcademicalHistory = student.AcademicalHistory
+        };
     }
 }
