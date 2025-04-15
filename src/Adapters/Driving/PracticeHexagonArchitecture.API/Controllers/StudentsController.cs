@@ -1,5 +1,5 @@
 using Domain.Dto;
-using Domain.Entities;
+using Domain.Entities.Students;
 using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 

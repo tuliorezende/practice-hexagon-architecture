@@ -1,6 +1,5 @@
 using Domain.Adapters;
-using Domain.Dto;
-using Domain.Entities;
+using Domain.Entities.Students;
 
 namespace Infra.Database.Memory.Repositories;
 

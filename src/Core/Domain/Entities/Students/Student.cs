@@ -1,7 +1,7 @@
 using Domain.Dto;
 using Domain.ValueObjects;
 
-namespace Domain.Entities;
+namespace Domain.Entities.Students;
 
 public class Student
 {

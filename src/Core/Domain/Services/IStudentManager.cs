@@ -1,6 +1,5 @@
 using Domain.Dto;
-using Domain.Entities;
-using Domain.ValueObjects;
+using Domain.Entities.Students;
 
 namespace Domain.Services;
 
