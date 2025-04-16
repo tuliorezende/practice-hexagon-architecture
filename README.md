@@ -83,3 +83,8 @@ AcademicalHistory -> Lista de entradas de histórico academico
 
 1. Criar métodos "externos" para operar a lista
 2. Usar o repositório do "Agregador" para operar os sub-objetos
+
+### A nivel de banco
+[Referencia para criar os relacionamentos](https://www.linkedin.com/pulse/understanding-navigation-properties-entity-framework-youssef-nour-jt8ff)
+
+Além de ter a propriedade de ID, ter um objeto de navegação e configurar via relacionamentos

@@ -16,7 +16,7 @@ public class Student
 
     public PersonalDocument PersonalDocument { get; private set; }
 
-    public List<AcademicalHistory> AcademicalHistory { get; private set; }
+    public List<AcademicalHistoryEntry> AcademicalHistory { get; private set; }
 
     public Student(string name, Address address, PersonalDocument personalDocument, Telephone telephone, string email)
     {
@@ -25,7 +25,7 @@ public class Student
         this.PersonalDocument = personalDocument;
         this.Telephone = telephone;
         this.Email = email;
-        this.AcademicalHistory = new List<AcademicalHistory>();
+        this.AcademicalHistory = new List<AcademicalHistoryEntry>();
     }
 
     public Student(StudentDto studentDto)
@@ -38,24 +38,24 @@ public class Student
         this.PersonalDocument = studentDto.PersonalDocument;
         this.Telephone = studentDto.Telephone;
         this.Email = studentDto.Email;
-        this.AcademicalHistory = new List<AcademicalHistory>();
+        this.AcademicalHistory = new List<AcademicalHistoryEntry>();
     }
 
     public Student()
     {
     }
 
-    public bool AddAcademicalHistory(AcademicalHistory academicalHistory)
+    public bool AddAcademicalHistory(AcademicalHistoryEntry academicalHistoryEntry)
     {
         var historicalExists = this.AcademicalHistory.Any(a =>
-            a.Discipline == academicalHistory.Discipline
-            && a.Year == academicalHistory.Year
+            a.Discipline == academicalHistoryEntry.Discipline
+            && a.Year == academicalHistoryEntry.Year
             && a.StudentId == this.Id);
 
         if (historicalExists)
             return false;
 
-        this.AcademicalHistory.Add(academicalHistory);
+        this.AcademicalHistory.Add(academicalHistoryEntry);
         return true;
     }
 

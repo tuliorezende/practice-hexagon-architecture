@@ -11,6 +11,8 @@ public class Teacher
 
     public Discipline Discipline { get; private set; }
 
+    public List<Course> Courses { get; set; }
+
     public Teacher(string name, Discipline discipline)
     {
         this.Name = name;

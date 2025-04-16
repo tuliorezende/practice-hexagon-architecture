@@ -10,6 +10,8 @@ public class ClassMaterial
 
     public string Url { get; private set; }
 
+    public List<Course> Courses { get; set; }
+
     public ClassMaterial(string name, string description, string url)
     {
         this.Name = name;

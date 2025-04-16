@@ -13,7 +13,7 @@ public interface IStudentManager
 
     Task<List<StudentDto>> GetStudentsAsync(int skip = 0, int take = 10);
 
-    Task<bool> CreateAcademicalHistoryAsyncEntryAsync(string studentId, AcademicalHistory academicalHistory);
+    Task<bool> CreateAcademicalHistoryAsyncEntryAsync(string studentId, AcademicalHistoryEntry academicalHistoryEntry);
 
-    Task<List<AcademicalHistory>> GetAcademicalHistoryFromStudentAsync(string studentId);
+    Task<List<AcademicalHistoryEntry>> GetAcademicalHistoryFromStudentAsync(string studentId);
 }

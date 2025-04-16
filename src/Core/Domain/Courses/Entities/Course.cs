@@ -16,7 +16,9 @@ public class Course
 
     public string? TeacherId { get; private set; }
 
-    private List<string> MaterialsId { get; set; }
+    public Teacher Teacher { get; set; }
+
+    private List<ClassMaterial> Materials { get; set; }
 
     public Course(string teacherId, string name, string description, Discipline discipline, string year)
     {
@@ -28,12 +30,12 @@ public class Course
         if (!string.IsNullOrEmpty(teacherId))
             this.TeacherId = teacherId;
 
-        MaterialsId = new List<string>();
+        Materials = new List<ClassMaterial>();
     }
 
-    public void AddMaterial(string materialId)
+    public void AddMaterial(ClassMaterial classMaterial)
     {
-        if (!this.MaterialsId.Any(material => material.Equals(materialId)))
-            this.MaterialsId.Add(materialId);
+        if (!this.Materials.Any(material => material.Id.Equals(classMaterial.Id)))
+            this.Materials.Add(classMaterial);
     }
 }

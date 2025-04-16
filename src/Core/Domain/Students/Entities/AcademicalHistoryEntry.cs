@@ -1,16 +1,23 @@
+using Domain.Students.Dtos;
 using Domain.ValueObjects;
 
 namespace Domain.Students.Entities;
 
-public class AcademicalHistory
+public class AcademicalHistoryEntry
 {
     public string Id { get; set; } = Guid.NewGuid().ToString();
-    public string StudentId { get; private set; }
+
     public int Year { get; private set; }
+
     public Discipline Discipline { get; private set; }
+
     public double Score { get; private set; }
 
-    public AcademicalHistory(string studentId, int year, Discipline discipline, double score)
+    public string StudentId { get; private set; }
+
+    public Student Student { get; private set; }
+
+    public AcademicalHistoryEntry(string studentId, int year, Discipline discipline, double score)
     {
         StudentId = studentId;
         Year = year;
