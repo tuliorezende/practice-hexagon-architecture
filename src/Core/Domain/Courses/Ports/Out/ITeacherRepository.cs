@@ -1,6 +1,6 @@
-using Domain.Entities.Courses;
+using Domain.Courses.Entities;
 
-namespace Domain.Adapters;
+namespace Domain.Courses.Ports.Out;
 
 public interface ITeacherRepository
 {

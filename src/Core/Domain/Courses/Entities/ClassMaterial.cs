@@ -1,4 +1,4 @@
-namespace Domain.Entities.Courses;
+namespace Domain.Courses.Entities;
 
 public class ClassMaterial
 {

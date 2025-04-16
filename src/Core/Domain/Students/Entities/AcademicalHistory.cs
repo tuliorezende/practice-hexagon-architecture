@@ -1,6 +1,6 @@
 using Domain.ValueObjects;
 
-namespace Domain.Entities.Students;
+namespace Domain.Students.Entities;
 
 public class AcademicalHistory
 {

@@ -1,7 +1,7 @@
-using Domain.Dto;
+using Domain.Courses.Dtos;
 using Domain.ValueObjects;
 
-namespace Domain.Entities.Courses;
+namespace Domain.Courses.Entities;
 
 public class Teacher
 {

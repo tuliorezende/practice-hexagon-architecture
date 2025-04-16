@@ -1,5 +1,6 @@
-using Domain.Dto;
-using Domain.Services;
+using Domain.Courses.Dtos;
+using Domain.Courses.Ports;
+using Domain.Courses.Ports.In;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 

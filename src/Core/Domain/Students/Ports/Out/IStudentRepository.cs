@@ -1,6 +1,6 @@
-using Domain.Entities.Students;
+using Domain.Students.Entities;
 
-namespace Domain.Adapters;
+namespace Domain.Students.Ports.Out;
 
 public interface IStudentRepository
 {

@@ -1,7 +1,11 @@
 using System.Reflection;
 using Application.Services;
-using Domain.Adapters;
-using Domain.Services;
+using Domain.Courses.Ports;
+using Domain.Courses.Ports.In;
+using Domain.Courses.Ports.Out;
+using Domain.Students.Ports;
+using Domain.Students.Ports.In;
+using Domain.Students.Ports.Out;
 using Infra.Database.Memory.Repositories;
 
 namespace PracticeHexagonArchitecture.API;

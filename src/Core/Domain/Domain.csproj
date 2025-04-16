@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Adapters\Repositories\" />
+      <Folder Include="Courses\ValueObjects\" />
     </ItemGroup>
 
 </Project>

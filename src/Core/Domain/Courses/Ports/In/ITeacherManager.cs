@@ -1,6 +1,6 @@
-using Domain.Dto;
+using Domain.Courses.Dtos;
 
-namespace Domain.Services;
+namespace Domain.Courses.Ports.In;
 
 public interface ITeacherManager
 {

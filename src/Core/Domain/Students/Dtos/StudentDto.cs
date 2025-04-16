@@ -1,10 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using Domain.Entities;
-using Domain.Entities.Students;
-using Domain.ValueObjects;
+using Domain.Students.Entities;
+using Domain.Students.ValueObjects;
 
-namespace Domain.Dto;
+namespace Domain.Students.Dtos;
 
 public class StudentDto
 {

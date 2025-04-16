@@ -1,6 +1,6 @@
 using Domain.ValueObjects;
 
-namespace Domain.Entities.Courses;
+namespace Domain.Courses.Entities;
 
 public class Course
 {

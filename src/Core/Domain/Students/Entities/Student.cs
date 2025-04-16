@@ -1,7 +1,8 @@
-using Domain.Dto;
+using Domain.Students.Dtos;
+using Domain.Students.ValueObjects;
 using Domain.ValueObjects;
 
-namespace Domain.Entities.Students;
+namespace Domain.Students.Entities;
 
 public class Student
 {

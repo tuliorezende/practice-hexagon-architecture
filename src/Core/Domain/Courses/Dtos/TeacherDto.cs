@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using Domain.Entities.Courses;
+using Domain.Courses.Entities;
 using Domain.ValueObjects;
 
-namespace Domain.Dto;
+namespace Domain.Courses.Dtos;
 
 public class TeacherDto
 {

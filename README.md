@@ -20,9 +20,14 @@ OBS: É um projeto "folha" pois é uma parte isolada da aplicação
 OBS2: Provê as interfaces (PORTAS)
 
 ### Pastas
-- `Entities`: Implementação das entidades como um todo
-- `Services`: Criação das interfaces a serem usadas pela `Application`
-- `Adapters`: Criação das interfaces a serem usadas por Repositories (Projetos na pasta `Driven`)
+
+- `<Domain>\Dtos`: Objetos para trafego entre camadas e uso nas requests
+- `<Domain>\Entities`: Implementação das entidades como um todo
+- `<Domain>\Ports\In`: Criação das interfaces a serem usadas pela `Application`
+- `<Domain>\Ports\Out`: Criação das interfaces a serem usadas por Repositories (Projetos na pasta `Driven`)
+- `<Domain>\ValueObjects`: Objetos de valor a serem usados para composição das entidades
+
+
 
 -----
 ## Application

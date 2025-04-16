@@ -1,4 +1,4 @@
-namespace Domain.ValueObjects;
+namespace Domain.Students.ValueObjects;
 
 public class PersonalDocument
 {

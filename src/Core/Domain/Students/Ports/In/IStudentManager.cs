@@ -1,7 +1,7 @@
-using Domain.Dto;
-using Domain.Entities.Students;
+using Domain.Students.Dtos;
+using Domain.Students.Entities;
 
-namespace Domain.Services;
+namespace Domain.Students.Ports.In;
 
 public interface IStudentManager
 {

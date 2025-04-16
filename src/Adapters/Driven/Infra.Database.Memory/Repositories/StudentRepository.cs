@@ -1,5 +1,6 @@
-using Domain.Adapters;
-using Domain.Entities.Students;
+using Domain.Students.Entities;
+using Domain.Students.Ports;
+using Domain.Students.Ports.Out;
 
 namespace Infra.Database.Memory.Repositories;
 
