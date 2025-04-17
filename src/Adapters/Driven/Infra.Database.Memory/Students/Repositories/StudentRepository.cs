@@ -1,8 +1,7 @@
 using Domain.Students.Entities;
-using Domain.Students.Ports;
 using Domain.Students.Ports.Out;
 
-namespace Infra.Database.Memory.Repositories;
+namespace Infra.Database.Memory.Students.Repositories;
 
 public class StudentRepository : IStudentRepository
 {

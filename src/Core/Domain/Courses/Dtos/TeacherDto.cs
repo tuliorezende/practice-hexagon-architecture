@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using Domain.Courses.Entities;
-using Domain.ValueObjects;
+using Domain.Shared;
 
 namespace Domain.Courses.Dtos;
 

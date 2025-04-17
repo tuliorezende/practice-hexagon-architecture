@@ -1,12 +1,16 @@
 using System.Reflection;
-using Application.Services;
+using Application.Courses;
+using Application.Courses.Services;
+using Application.Students;
+using Application.Students.Services;
 using Domain.Courses.Ports;
 using Domain.Courses.Ports.In;
 using Domain.Courses.Ports.Out;
 using Domain.Students.Ports;
 using Domain.Students.Ports.In;
 using Domain.Students.Ports.Out;
-using Infra.Database.Memory.Repositories;
+using Infra.Database.Memory.Courses.Repositories;
+using Infra.Database.Memory.Students.Repositories;
 
 namespace PracticeHexagonArchitecture.API;
 
@@ -33,6 +37,9 @@ public class Program
 
         builder.Services.AddSingleton<ITeacherManager, TeacherManager>();
         builder.Services.AddSingleton<ITeacherRepository, TeacherRepository>();
+        
+        builder.Services.AddSingleton<ICourseManager, CourseManager>();
+        builder.Services.AddSingleton<ICourseRepository, CourseRepository>();
         
         var app = builder.Build();
 

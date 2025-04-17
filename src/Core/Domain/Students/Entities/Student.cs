@@ -1,6 +1,5 @@
 using Domain.Students.Dtos;
 using Domain.Students.ValueObjects;
-using Domain.ValueObjects;
 
 namespace Domain.Students.Entities;
 

@@ -1,5 +1,5 @@
 using Domain.Courses.Dtos;
-using Domain.ValueObjects;
+using Domain.Shared;
 
 namespace Domain.Courses.Entities;
 

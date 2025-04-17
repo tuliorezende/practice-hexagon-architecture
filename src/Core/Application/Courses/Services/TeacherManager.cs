@@ -1,10 +1,9 @@
 using Domain.Courses.Dtos;
 using Domain.Courses.Entities;
-using Domain.Courses.Ports;
 using Domain.Courses.Ports.In;
 using Domain.Courses.Ports.Out;
 
-namespace Application.Services;
+namespace Application.Courses.Services;
 
 public class TeacherManager : ITeacherManager
 {

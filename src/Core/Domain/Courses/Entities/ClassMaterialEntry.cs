@@ -1,6 +1,6 @@
 namespace Domain.Courses.Entities;
 
-public class ClassMaterial
+public class ClassMaterialEntry
 {
     public string Id { get; private set; } = Guid.NewGuid().ToString();
 
@@ -12,7 +12,7 @@ public class ClassMaterial
 
     public List<Course> Courses { get; set; }
 
-    public ClassMaterial(string name, string description, string url)
+    public ClassMaterialEntry(string name, string description, string url)
     {
         this.Name = name;
         this.Description = description;

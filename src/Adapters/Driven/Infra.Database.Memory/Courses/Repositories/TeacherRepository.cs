@@ -1,8 +1,7 @@
 using Domain.Courses.Entities;
-using Domain.Courses.Ports;
 using Domain.Courses.Ports.Out;
 
-namespace Infra.Database.Memory.Repositories;
+namespace Infra.Database.Memory.Courses.Repositories;
 
 public class TeacherRepository : ITeacherRepository
 {

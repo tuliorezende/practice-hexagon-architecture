@@ -1,5 +1,5 @@
+using Domain.Shared;
 using Domain.Students.Dtos;
-using Domain.ValueObjects;
 
 namespace Domain.Students.Entities;
 
