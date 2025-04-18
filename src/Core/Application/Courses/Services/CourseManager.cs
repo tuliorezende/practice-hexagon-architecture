@@ -48,12 +48,14 @@ public class CourseManager : ICourseManager
         return courses;
     }
 
-    public async Task<bool> CreateClassMaterialAsync(string courseId, ClassMaterialEntry classMaterialEntry)
+    public async Task<bool> CreateClassMaterialAsync(string courseId, ClassMaterialEntryDto classMaterialEntryDto)
     {
         var course = await _courseRepository.GetCourseByIdAsync(courseId);
 
         if (course is null)
             return false;
+
+        var classMaterialEntry = new ClassMaterialEntry(classMaterialEntryDto);
 
         course.AddMaterial(classMaterialEntry);
 
@@ -61,13 +63,13 @@ public class CourseManager : ICourseManager
         return true;
     }
 
-    public async Task<List<ClassMaterialEntry>> GetClassMaterialFromCourseAsync(string courseId)
+    public async Task<List<ClassMaterialEntryDto>> GetClassMaterialFromCourseAsync(string courseId)
     {
         var course = await _courseRepository.GetCourseByIdAsync(courseId);
 
         if (course is null)
             return null;
 
-        return course.Materials;
+        return course.Materials.ConvertAll(c => new ClassMaterialEntryDto(c));
     }
 }

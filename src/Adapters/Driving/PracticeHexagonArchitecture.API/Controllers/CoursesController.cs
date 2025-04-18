@@ -84,12 +84,12 @@ public class CoursesController : ControllerBase
     /// Insert a class material in a specific course
     /// </summary>
     /// <param name="courseId"></param>
-    /// <param name="classMaterialEntry"></param>
+    /// <param name="classMaterialEntryDto"></param>
     /// <returns></returns>
     [HttpPost("{courseId}/classMaterial")]
-    public async Task<IActionResult> PostClassMaterial(string courseId, ClassMaterialEntry classMaterialEntry)
+    public async Task<IActionResult> PostClassMaterial(string courseId, ClassMaterialEntryDto classMaterialEntryDto)
     {
-        await _courseManager.CreateClassMaterialAsync(courseId, classMaterialEntry);
+        await _courseManager.CreateClassMaterialAsync(courseId, classMaterialEntryDto);
         return Created();
     }
 }

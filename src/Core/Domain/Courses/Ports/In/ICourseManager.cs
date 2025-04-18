@@ -13,7 +13,7 @@ public interface ICourseManager
 
     Task<List<CourseDto>> GetCoursesAsync(int skip = 0, int take = 10);
 
-    Task<bool> CreateClassMaterialAsync(string course, ClassMaterialEntry classMaterialEntry);
+    Task<bool> CreateClassMaterialAsync(string course, ClassMaterialEntryDto classMaterialEntry);
 
-    Task<List<ClassMaterialEntry>> GetClassMaterialFromCourseAsync(string courseId);
+    Task<List<ClassMaterialEntryDto>> GetClassMaterialFromCourseAsync(string courseId);
 }

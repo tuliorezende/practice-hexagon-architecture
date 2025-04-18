@@ -1,3 +1,5 @@
+using Domain.Courses.Dtos;
+
 namespace Domain.Courses.Entities;
 
 public class ClassMaterialEntry
@@ -17,5 +19,13 @@ public class ClassMaterialEntry
         this.Name = name;
         this.Description = description;
         this.Url = url;
+    }
+
+    public ClassMaterialEntry(ClassMaterialEntryDto entry)
+    {
+        this.Id = entry.Id;
+        this.Name = entry.Name;
+        this.Description = entry.Description;
+        this.Url = entry.Url;
     }
 }
