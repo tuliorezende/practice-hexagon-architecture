@@ -58,6 +58,8 @@ OBS: Referencia para ter acesso as interfaces (PORTAS) para criação dos recipi
 - `Repositories`: Criação de acesso ao banco
 - `Operations`: Operações que não precisam de repostas e etc
 
+### Pasta Entities
+Caso utilize uma estrutura de banco (EX: Entity Framework) pode-se criar as classes de tabela (replicando o conteúdo da domain)
 
 -----
 
@@ -87,7 +89,7 @@ AcademicalHistory -> Lista de entradas de histórico academico
 ### A nivel de banco
 [Referencia para criar os relacionamentos](https://www.linkedin.com/pulse/understanding-navigation-properties-entity-framework-youssef-nour-jt8ff)
 
-Além de ter a propriedade de ID, ter um objeto de navegação e configurar via relacionamentos
-
+- Além de ter a propriedade de ID, ter um objeto de navegação e configurar via relacionamentos
+- Criar as classes na Camada de Infra (Infra/Entities) para representar o que seriam as tabelas de banco de dados, conforme projeto da POC
 ## Tratamentos de Exceção
 https://medium.com/codenx/exception-handling-in-net-core-web-api-e0c4aad1db06
