@@ -8,15 +8,22 @@ namespace Application.Courses.Services;
 public class CourseManager : ICourseManager
 {
     private readonly ICourseRepository _courseRepository;
+    private readonly ITeacherManager _teacherManager;
 
-    public CourseManager(ICourseRepository courseRepository)
+    public CourseManager(ICourseRepository courseRepository, ITeacherManager teacherManager)
     {
         _courseRepository = courseRepository;
+        _teacherManager = teacherManager;
     }
 
     public async Task<string> UpdateCourseAsync(string courseId, CourseDto courseDto)
     {
-        var course = new Course(courseDto);
+        TeacherDto teacher = null;
+
+        if (courseDto.TeacherId is not null)
+            teacher = await _teacherManager.GetTeacherByIdAsync(courseDto.TeacherId);
+
+        var course = new Course(courseDto, teacher);
 
         var updatedId = await _courseRepository.UpdateCourseAsync(courseId, course);
 
@@ -25,7 +32,12 @@ public class CourseManager : ICourseManager
 
     public async Task<string> CreateCourseAsync(CourseDto courseDto)
     {
-        var course = new Course(courseDto);
+        TeacherDto teacher = null;
+
+        if (courseDto.TeacherId is not null)
+            teacher = await _teacherManager.GetTeacherByIdAsync(courseDto.TeacherId);
+
+        var course = new Course(courseDto, teacher);
 
         var courseId = await _courseRepository.CreateCourseAsync(course);
         return courseId;

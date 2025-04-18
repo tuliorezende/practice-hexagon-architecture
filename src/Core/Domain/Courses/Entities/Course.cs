@@ -23,8 +23,8 @@ public class Course
 
     public List<ClassMaterialEntry> Materials { get; private set; }
 
-    public Course(string teacherId, string name, string description, Discipline discipline, string year,
-        DateTimeOffset startDate, DateTimeOffset endDate)
+    public Course(string name, string description, Discipline discipline, string year,
+        DateTimeOffset startDate, DateTimeOffset endDate, TeacherDto teacherDto)
     {
         this.Name = name;
         this.Description = description;
@@ -32,13 +32,12 @@ public class Course
         this.StartDate = startDate;
         this.EndDate = endDate;
 
-        if (!string.IsNullOrEmpty(teacherId))
-            this.TeacherId = teacherId;
+        CheckTeacherDiscipline(teacherDto);
 
         Materials = new List<ClassMaterialEntry>();
     }
 
-    public Course(CourseDto courseDto)
+    public Course(CourseDto courseDto, TeacherDto teacherDto)
     {
         this.Name = courseDto.Name;
         this.Description = courseDto.Description;
@@ -46,8 +45,7 @@ public class Course
         this.StartDate = courseDto.StartDate;
         this.EndDate = courseDto.EndDate;
 
-        if (courseDto.TeacherId != null)
-            this.TeacherId = courseDto.TeacherId;
+        CheckTeacherDiscipline(teacherDto);
 
         this.Materials = new List<ClassMaterialEntry>();
     }
@@ -75,5 +73,17 @@ public class Course
     {
         if (!this.Materials.Any(material => material.Id.Equals(classMaterialEntry.Id)))
             this.Materials.Add(classMaterialEntry);
+    }
+
+    private void CheckTeacherDiscipline(TeacherDto teacherDto)
+    {
+        if (teacherDto is null)
+            return;
+
+        if (teacherDto.Discipline != this.Discipline)
+            throw new ArgumentException(
+                $"{nameof(Teacher)}.{nameof(teacherDto.Discipline)} is different from {nameof(Course)}{nameof(this.Discipline)}");
+
+        this.TeacherId = teacherDto.Id;
     }
 }
