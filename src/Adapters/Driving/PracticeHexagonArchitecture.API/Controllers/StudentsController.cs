@@ -96,12 +96,12 @@ public class StudentsController : ControllerBase
     /// Create an academical history entry on database
     /// </summary>
     /// <param name="studentId"></param>
-    /// <param name="academicalHistoryEntry"></param>
+    /// <param name="academicalHistoryEntryDto"></param>
     /// <returns></returns>
     [HttpPost("{studentId}/academicalHistory")]
-    public async Task<IActionResult> PostAcademicalHistory(string studentId, AcademicalHistoryEntry academicalHistoryEntry)
+    public async Task<IActionResult> PostAcademicalHistory(string studentId, AcademicalHistoryEntryDto academicalHistoryEntryDto)
     {
-        await _studentManager.CreateAcademicalHistoryAsyncEntryAsync(studentId, academicalHistoryEntry);
+        await _studentManager.CreateAcademicalHistoryAsyncEntryAsync(studentId, academicalHistoryEntryDto);
 
         return Created();
     }

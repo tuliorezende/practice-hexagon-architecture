@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Domain.Shared;
 using Domain.Students.Dtos;
 
@@ -15,13 +16,21 @@ public class AcademicalHistoryEntry
 
     public string StudentId { get; private set; }
 
-    public Student Student { get; private set; }
+    public Student? Student { get; private set; }
 
     public AcademicalHistoryEntry(string studentId, int year, Discipline discipline, double score)
     {
-        StudentId = studentId;
-        Year = year;
-        Discipline = discipline;
-        Score = score;
+        this.Year = year;
+        this.Discipline = discipline;
+        this.Score = score;
+        this.StudentId = studentId;
+    }
+
+    public AcademicalHistoryEntry(string studentId, AcademicalHistoryEntryDto academicalHistoryEntryDto)
+    {
+        this.Year = academicalHistoryEntryDto.Year;
+        this.Discipline = academicalHistoryEntryDto.Discipline;
+        this.Score = academicalHistoryEntryDto.Score;
+        this.StudentId = studentId;
     }
 }

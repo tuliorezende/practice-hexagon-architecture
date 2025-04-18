@@ -55,12 +55,14 @@ public class StudentManager : IStudentManager
     #region Academical History Operations
 
     public async Task<bool> CreateAcademicalHistoryAsyncEntryAsync(string studentId,
-        AcademicalHistoryEntry academicalHistoryEntry)
+        AcademicalHistoryEntryDto academicalHistoryEntryDto)
     {
         var student = await _studentRepository.GetStudentByIdAsync(studentId);
 
         if (student is null)
             return false;
+
+        var academicalHistoryEntry = new AcademicalHistoryEntry(studentId, academicalHistoryEntryDto);
 
         student.AddAcademicalHistory(academicalHistoryEntry);
 
@@ -69,14 +71,14 @@ public class StudentManager : IStudentManager
         return true;
     }
 
-    public async Task<List<AcademicalHistoryEntry>> GetAcademicalHistoryFromStudentAsync(string studentId)
+    public async Task<List<AcademicalHistoryEntryDto>> GetAcademicalHistoryFromStudentAsync(string studentId)
     {
         var student = await _studentRepository.GetStudentByIdAsync(studentId);
 
         if (student is null)
             return null;
 
-        return student.AcademicalHistory;
+        return student.AcademicalHistory.ConvertAll(ah => new AcademicalHistoryEntryDto(ah));
     }
 
     #endregion
