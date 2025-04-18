@@ -6,7 +6,7 @@ namespace Domain.Students.Dtos;
 
 public class AcademicalHistoryEntryDto
 {
-    public string? Id { get; set; } = Guid.NewGuid().ToString();
+    public string? Id { get; private set; } = Guid.NewGuid().ToString();
 
     public int Year { get; private set; }
 

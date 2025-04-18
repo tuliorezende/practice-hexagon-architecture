@@ -52,7 +52,7 @@ public class Course
         this.Materials = new List<ClassMaterialEntry>();
     }
 
-    public Course()
+    private Course()
     {
     }
 

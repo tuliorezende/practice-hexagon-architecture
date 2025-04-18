@@ -25,7 +25,7 @@ public class Teacher
         this.Discipline = teacher.Discipline;
     }
 
-    public Teacher()
+    private Teacher()
     {
     }
 

@@ -7,7 +7,7 @@ namespace Domain.Courses.Dtos;
 
 public class CourseDto
 {
-    public string? Id { get; set; }
+    public string? Id { get; private set; }
 
     [Required] public string Name { get; private set; }
 

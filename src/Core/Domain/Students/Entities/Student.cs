@@ -40,7 +40,7 @@ public class Student
         this.AcademicalHistory = new List<AcademicalHistoryEntry>();
     }
 
-    public Student()
+    private Student()
     {
     }
 
