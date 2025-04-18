@@ -88,3 +88,6 @@ AcademicalHistory -> Lista de entradas de histórico academico
 [Referencia para criar os relacionamentos](https://www.linkedin.com/pulse/understanding-navigation-properties-entity-framework-youssef-nour-jt8ff)
 
 Além de ter a propriedade de ID, ter um objeto de navegação e configurar via relacionamentos
+
+## Tratamentos de Exceção
+https://medium.com/codenx/exception-handling-in-net-core-web-api-e0c4aad1db06
