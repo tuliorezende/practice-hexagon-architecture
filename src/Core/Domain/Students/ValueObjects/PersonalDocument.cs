@@ -1,5 +1,8 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Domain.Students.ValueObjects;
 
+[ComplexType]
 public class PersonalDocument
 {
     public DocumentType DocumentType { get; private set; }

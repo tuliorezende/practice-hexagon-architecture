@@ -10,5 +10,5 @@ public class Teacher
 
     public Discipline Discipline { get; private set; }
 
-    public List<Domain.Courses.Entities.Course> Courses { get; set; }
+    public List<Course> Courses { get; private set; }
 }

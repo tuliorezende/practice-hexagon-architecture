@@ -1,5 +1,8 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Domain.Students.ValueObjects;
 
+[ComplexType]
 public class Address
 {
     public string Street { get; private set; }

@@ -1,5 +1,8 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Domain.Students.ValueObjects;
 
+[ComplexType]
 public class Telephone
 {
     public string InternationalPrefix { get; private set; }
