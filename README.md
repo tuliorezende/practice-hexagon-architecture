@@ -131,3 +131,6 @@ https://medium.com/codenx/exception-handling-in-net-core-web-api-e0c4aad1db06
 Permitir injetar varias implementações do mesmo tipo e descobrir qual o tipo desejado em tempo de execução
 
 https://www.c-sharpcorner.com/article/net-core-dependency-injection-one-interface-multiple-implementation/
+
+# To-Do
+[Testar configurações de construtores](https://learn.microsoft.com/en-us/ef/core/modeling/constructors)
