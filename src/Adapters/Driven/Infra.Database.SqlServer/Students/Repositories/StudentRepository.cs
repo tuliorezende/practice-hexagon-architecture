@@ -25,13 +25,22 @@ public class StudentRepository : IStudentRepository
 
     public async Task<string> CreateStudentAsync(Student student)
     {
-        var studentEntity = new Infra.Database.SqlServer.Students.Entities.Student(
-            student.Id,
-            student.Name,
-            student.Address,
-            student.Telephone,
-            student.Email,
-            student.PersonalDocument);
+        // var studentEntity = new Infra.Database.SqlServer.Students.Entities.Student(
+        //     student.Id,
+        //     student.Name,
+        //     student.Address,
+        //     student.Telephone,
+        //     student.Email,
+        //     student.PersonalDocument);
+        var studentEntity = new Infra.Database.SqlServer.Students.Entities.Student
+        {
+            Id = student.Id,
+            Name = student.Name,
+            Address = student.Address,
+            Telephone = student.Telephone,
+            Email = student.Email,
+            PersonalDocument = student.PersonalDocument,
+        };
 
         _dbContext.Students.Add(studentEntity);
         await _dbContext.SaveChangesAsync();

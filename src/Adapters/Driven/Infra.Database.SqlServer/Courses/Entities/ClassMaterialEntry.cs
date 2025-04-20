@@ -2,13 +2,17 @@ namespace Infra.Database.SqlServer.Courses.Entities;
 
 public class ClassMaterialEntry
 {
-    public string Id { get; private set; } = Guid.NewGuid().ToString();
+    public string Id { get; private set; }
 
-    public string Name { get; private set; }
+    public string Name { get; set; }
 
-    public string Description { get; private set; }
+    public string Description { get; set; }
 
-    public string Url { get; private set; }
+    public string Url { get; set; }
 
     public List<Course> Courses { get; set; }
+
+    public ClassMaterialEntry()
+    {
+    }
 }

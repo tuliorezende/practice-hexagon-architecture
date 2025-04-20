@@ -24,7 +24,12 @@ public class TeacherRepository : ITeacherRepository
 
     public async Task<string> CreateTeacherAsync(Teacher teacher)
     {
-        var teacherEntity = new Entities.Teacher(teacher.Id, teacher.Name, teacher.Discipline);
+        var teacherEntity = new Entities.Teacher
+        {
+            Id = teacher.Id,
+            Name = teacher.Name,
+            Discipline = teacher.Discipline,
+        };
 
         _dbContext.Teachers.Add(teacherEntity);
         await _dbContext.SaveChangesAsync();

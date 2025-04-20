@@ -4,21 +4,25 @@ namespace Infra.Database.SqlServer.Courses.Entities;
 
 public class Course
 {
-    public string Id { get; private set; } = Guid.NewGuid().ToString();
+    public string Id { get; set; }
 
-    public string Name { get; private set; }
+    public string Name { get; set; }
 
-    public string Description { get; private set; }
+    public string Description { get; set; }
 
-    public Discipline Discipline { get; private set; }
+    public Discipline Discipline { get; set; }
 
-    public DateTimeOffset StartDate { get; private set; }
+    public DateTimeOffset StartDate { get; set; }
 
-    public DateTimeOffset EndDate { get; private set; }
+    public DateTimeOffset EndDate { get; set; }
 
-    public string? TeacherId { get; private set; }
+    public string? TeacherId { get; set; }
 
     public Teacher Teacher { get; set; }
 
-    public List<ClassMaterialEntry> Materials { get; private set; }
+    public List<ClassMaterialEntry> Materials { get; set; }
+
+    public Course()
+    {
+    }
 }

@@ -4,13 +4,13 @@ namespace Infra.Database.SqlServer.Courses.Entities;
 
 public class Teacher
 {
-    public string Id { get; private set; }
+    public string Id { get; set; }
 
-    public string Name { get; private set; }
+    public string Name { get; set; }
 
-    public Discipline Discipline { get; private set; }
+    public Discipline Discipline { get; set; }
 
-    public List<Course>? Courses { get; private set; }
+    public List<Course>? Courses { get; set; }
 
     public void Update(string teacherId, Domain.Courses.Entities.Teacher teacher)
     {
@@ -19,14 +19,14 @@ public class Teacher
         this.Discipline = teacher.Discipline;
     }
 
-    public Teacher(string id, string name, Discipline discipline)
-    {
-        this.Id = id;
-        this.Name = name;
-        this.Discipline = discipline;
-    }
-
-    public Teacher()
-    {
-    }
+    // public Teacher(string id, string name, Discipline discipline)
+    // {
+    //     this.Id = id;
+    //     this.Name = name;
+    //     this.Discipline = discipline;
+    // }
+    //
+    // public Teacher()
+    // {
+    // }
 }
