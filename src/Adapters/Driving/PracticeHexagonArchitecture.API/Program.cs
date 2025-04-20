@@ -14,7 +14,7 @@ namespace PracticeHexagonArchitecture.API;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +43,13 @@ public class Program
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
         var app = builder.Build();
+
+        // Execute migrations automatically on app startup
+        using (var scope = app.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            await db.Database.MigrateAsync();
+        }
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())

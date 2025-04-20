@@ -126,3 +126,8 @@ dotnet ef database update --project src/Adapters/Driven/Infra.Database.SqlServer
 
 ## Tratamentos de Exceção
 https://medium.com/codenx/exception-handling-in-net-core-web-api-e0c4aad1db06
+
+## Resolução de Dependencia em Tempo de execução
+Permitir injetar varias implementações do mesmo tipo e descobrir qual o tipo desejado em tempo de execução
+
+https://www.c-sharpcorner.com/article/net-core-dependency-injection-one-interface-multiple-implementation/

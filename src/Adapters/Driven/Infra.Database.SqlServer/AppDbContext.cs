@@ -16,6 +16,10 @@ public class AppDbContext : DbContext
 
     public DbSet<Course> Courses { get; set; }
 
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    {
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(
@@ -48,7 +52,7 @@ public class AppDbContext : DbContext
             .HasOne(a => a.Student)
             .WithMany(a => a.AcademicalHistory)
             .HasForeignKey(a => a.StudentId);
-        
+
         base.OnModelCreating(modelBuilder);
     }
 }
