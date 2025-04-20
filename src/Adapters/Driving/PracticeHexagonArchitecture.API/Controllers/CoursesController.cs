@@ -1,7 +1,5 @@
 using Domain.Courses.Dtos;
-using Domain.Courses.Entities;
 using Domain.Courses.Ports.In;
-using Domain.Students.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PracticeHexagonArchitecture.API.Controllers;

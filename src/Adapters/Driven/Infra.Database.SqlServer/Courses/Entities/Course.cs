@@ -1,6 +1,6 @@
 using Domain.Shared;
 
-namespace Infra.Database.SqlServer.Courses;
+namespace Infra.Database.SqlServer.Courses.Entities;
 
 public class Course
 {

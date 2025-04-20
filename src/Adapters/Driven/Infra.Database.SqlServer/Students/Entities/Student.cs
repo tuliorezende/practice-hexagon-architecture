@@ -1,6 +1,6 @@
 using Domain.Students.ValueObjects;
 
-namespace Infra.Database.SqlServer.Students;
+namespace Infra.Database.SqlServer.Students.Entities;
 
 public class Student
 {

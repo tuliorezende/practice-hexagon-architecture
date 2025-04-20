@@ -1,6 +1,5 @@
-using Domain.Students.ValueObjects;
-using Infra.Database.SqlServer.Courses;
-using Infra.Database.SqlServer.Students;
+using Infra.Database.SqlServer.Courses.Entities;
+using Infra.Database.SqlServer.Students.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Database.SqlServer;

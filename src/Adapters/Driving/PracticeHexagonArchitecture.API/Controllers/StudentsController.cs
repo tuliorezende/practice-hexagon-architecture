@@ -1,6 +1,4 @@
 using Domain.Students.Dtos;
-using Domain.Students.Entities;
-using Domain.Students.Ports;
 using Domain.Students.Ports.In;
 using Microsoft.AspNetCore.Mvc;
 

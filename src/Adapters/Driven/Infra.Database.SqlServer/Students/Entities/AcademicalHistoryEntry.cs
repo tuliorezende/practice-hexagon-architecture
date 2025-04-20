@@ -1,6 +1,6 @@
 using Domain.Shared;
 
-namespace Infra.Database.SqlServer.Students;
+namespace Infra.Database.SqlServer.Students.Entities;
 
 public class AcademicalHistoryEntry
 {

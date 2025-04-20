@@ -1,5 +1,4 @@
 using Domain.Students.Dtos;
-using Domain.Students.Entities;
 
 namespace Domain.Students.Ports.In;
 

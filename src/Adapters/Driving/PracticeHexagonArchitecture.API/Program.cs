@@ -1,16 +1,14 @@
 using System.Reflection;
-using Application.Courses;
 using Application.Courses.Services;
-using Application.Students;
 using Application.Students.Services;
-using Domain.Courses.Ports;
 using Domain.Courses.Ports.In;
 using Domain.Courses.Ports.Out;
-using Domain.Students.Ports;
 using Domain.Students.Ports.In;
 using Domain.Students.Ports.Out;
 using Infra.Database.Memory.Courses.Repositories;
 using Infra.Database.Memory.Students.Repositories;
+using Infra.Database.SqlServer;
+using Microsoft.EntityFrameworkCore;
 
 namespace PracticeHexagonArchitecture.API;
 
@@ -37,10 +35,13 @@ public class Program
 
         builder.Services.AddSingleton<ITeacherManager, TeacherManager>();
         builder.Services.AddSingleton<ITeacherRepository, TeacherRepository>();
-        
+
         builder.Services.AddSingleton<ICourseManager, CourseManager>();
         builder.Services.AddSingleton<ICourseRepository, CourseRepository>();
-        
+
+        builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
