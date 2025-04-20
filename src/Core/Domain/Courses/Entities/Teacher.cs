@@ -38,4 +38,14 @@ public class Teacher
             Discipline = teacher.Discipline,
         };
     }
+
+    public static Teacher Load(string id, string name, Discipline discipline)
+    {
+        return new Teacher
+        {
+            Id = id,
+            Name = name,
+            Discipline = discipline,
+        };
+    }
 }
