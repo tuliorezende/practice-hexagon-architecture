@@ -9,6 +9,7 @@ using Infra.Database.Memory.Courses.Repositories;
 using Infra.Database.Memory.Students.Repositories;
 using Infra.Database.SqlServer;
 using Microsoft.EntityFrameworkCore;
+using StudentRepository = Infra.Database.SqlServer.Students.Repositories.StudentRepository;
 using TeacherRepository = Infra.Database.SqlServer.Courses.Repositories.TeacherRepository;
 
 namespace PracticeHexagonArchitecture.API;
@@ -32,15 +33,16 @@ public class Program
         });
 
         builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));        
-        
-        builder.Services.AddSingleton<IStudentManager, StudentManager>();
-        builder.Services.AddSingleton<IStudentRepository, StudentRepository>();
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+        builder.Services.AddTransient<IStudentManager, StudentManager>();
+        builder.Services.AddTransient<IStudentRepository, StudentRepository>();
+        // builder.Services.AddTransient<IStudentRepository, StudentRepository>();
 
         builder.Services.AddTransient<ITeacherManager, TeacherManager>();
         builder.Services.AddTransient<ITeacherRepository, TeacherRepository>();
         // builder.Services.AddSingleton<ITeacherRepository, TeacherRepository>();
-        
+
         builder.Services.AddTransient<ICourseManager, CourseManager>();
         builder.Services.AddTransient<ICourseRepository, CourseRepository>();
 

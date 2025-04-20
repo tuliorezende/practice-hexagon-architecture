@@ -71,4 +71,18 @@ public class Student
             AcademicalHistory = student.AcademicalHistory
         };
     }
+
+    public static Student Load(string id, string name, Address address, PersonalDocument personalDocument,
+        Telephone telephone, string email)
+    {
+        return new Student
+        {
+            Id = id,
+            Name = name,
+            Address = address,
+            PersonalDocument = personalDocument,
+            Telephone = telephone,
+            Email = email
+        };
+    }
 }

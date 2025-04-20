@@ -12,14 +12,6 @@ public class Teacher
 
     public List<Course>? Courses { get; private set; }
 
-    // public Teacher(string id, string name, Discipline discipline, List<Course>? courses)
-    // {
-    //     this.Id = id;
-    //     this.Name = name;
-    //     this.Discipline = discipline;
-    //     this.Courses = courses ?? new List<Course>();
-    // }
-
     public void Update(string teacherId, Domain.Courses.Entities.Teacher teacher)
     {
         this.Id = teacherId;
@@ -32,5 +24,9 @@ public class Teacher
         this.Id = id;
         this.Name = name;
         this.Discipline = discipline;
+    }
+
+    public Teacher()
+    {
     }
 }

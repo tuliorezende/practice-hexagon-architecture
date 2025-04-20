@@ -15,7 +15,7 @@ public class TeacherRepository : ITeacherRepository
 
     public async Task<List<Teacher>> GetTeachersAsync(int skip = 0, int take = 10)
     {
-        var teachersEntities = _dbContext.Teachers.Skip(skip).Take(take).ToList();
+        var teachersEntities = await _dbContext.Teachers.Skip(skip).Take(take).ToListAsync();
 
         var teachers = teachersEntities.ConvertAll(s => Teacher.Load(s.Id, s.Name, s.Discipline));
 
