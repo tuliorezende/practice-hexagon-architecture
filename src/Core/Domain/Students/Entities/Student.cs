@@ -44,7 +44,7 @@ public class Student
     {
     }
 
-    public bool AddAcademicalHistory(AcademicalHistoryEntry academicalHistoryEntry)
+    public bool AllowedToAddAcademicalHistory(AcademicalHistoryEntry academicalHistoryEntry)
     {
         var historicalExists = this.AcademicalHistory.Any(a =>
             a.Discipline == academicalHistoryEntry.Discipline
@@ -73,7 +73,7 @@ public class Student
     }
 
     public static Student Load(string id, string name, Address address, PersonalDocument personalDocument,
-        Telephone telephone, string email)
+        Telephone telephone, string email, List<AcademicalHistoryEntry> academicalHistoryEntry)
     {
         return new Student
         {
@@ -82,7 +82,9 @@ public class Student
             Address = address,
             PersonalDocument = personalDocument,
             Telephone = telephone,
-            Email = email
+            Email = email,
+            AcademicalHistory = academicalHistoryEntry
+            
         };
     }
 }

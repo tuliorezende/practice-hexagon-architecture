@@ -87,7 +87,12 @@ public class StudentsController : ControllerBase
     [HttpGet("{studentId}/academicalHistory")]
     public async Task<IActionResult> GetAcademicalHistory(string studentId)
     {
-        return Ok(await _studentManager.GetAcademicalHistoryFromStudentAsync(studentId));
+        var history = await _studentManager.GetAcademicalHistoryFromStudentAsync(studentId);
+
+        if (history is null)
+            return NoContent();
+
+        return Ok(history);
     }
 
     /// <summary>
@@ -97,9 +102,14 @@ public class StudentsController : ControllerBase
     /// <param name="academicalHistoryEntryDto"></param>
     /// <returns></returns>
     [HttpPost("{studentId}/academicalHistory")]
-    public async Task<IActionResult> PostAcademicalHistory(string studentId, AcademicalHistoryEntryDto academicalHistoryEntryDto)
+    public async Task<IActionResult> PostAcademicalHistory(string studentId,
+        AcademicalHistoryEntryDto academicalHistoryEntryDto)
     {
-        await _studentManager.CreateAcademicalHistoryAsyncEntryAsync(studentId, academicalHistoryEntryDto);
+        var created =
+            await _studentManager.CreateAcademicalHistoryAsyncEntryAsync(studentId, academicalHistoryEntryDto);
+
+        if (!created)
+            return new NoContentResult();
 
         return Created();
     }

@@ -64,9 +64,10 @@ public class StudentManager : IStudentManager
 
         var academicalHistoryEntry = new AcademicalHistoryEntry(studentId, academicalHistoryEntryDto);
 
-        student.AddAcademicalHistory(academicalHistoryEntry);
+        if (!student.AllowedToAddAcademicalHistory(academicalHistoryEntry))
+            return false;
 
-        await _studentRepository.UpdateStudentAsync(studentId, student);
+        await _studentRepository.CreateAcademicalHistoryAsyncEntryAsync(student, academicalHistoryEntry);
 
         return true;
     }

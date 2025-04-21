@@ -42,4 +42,18 @@ public class StudentRepository : IStudentRepository
 
         return studentId;
     }
+
+    public async Task<bool> CreateAcademicalHistoryAsyncEntryAsync(Student student,
+        AcademicalHistoryEntry academicalHistoryEntry)
+    {
+        var studentToUpdate = _students.FirstOrDefault(s => s.Id == student.Id);
+
+        if (studentToUpdate == null)
+            return false;
+
+        var indexToUpdate = _students.IndexOf(studentToUpdate);
+
+        _students[indexToUpdate].AllowedToAddAcademicalHistory(academicalHistoryEntry);
+        return true;
+    }
 }

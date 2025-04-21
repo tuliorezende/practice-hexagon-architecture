@@ -15,23 +15,49 @@ public class StudentRepository : IStudentRepository
 
     public async Task<List<Student>> GetStudentsAsync(int skip = 0, int take = 10)
     {
-        var teachersEntities = await _dbContext.Students.Skip(skip).Take(take).ToListAsync();
+        var students = new List<Student>();
+        var studentEntities = await _dbContext.Students.Skip(skip).Take(take).ToListAsync();
 
-        var teachers = teachersEntities.ConvertAll(s =>
-            Student.Load(s.Id, s.Name, s.Address, s.PersonalDocument, s.Telephone, s.Email));
+        if (studentEntities?.Count == 0)
+            return null;
 
-        return teachers;
+        foreach (var studentEntity in studentEntities)
+        {
+            var academicalHistoryEntry =
+                await _dbContext
+                    .AcademicalHistory
+                    .Where(ah => ah.StudentId == studentEntity.Id)
+                    .ToListAsync();
+
+            var academicalHistoryList = new List<AcademicalHistoryEntry>();
+
+            foreach (var academicalHistoryEntryEntity in academicalHistoryEntry)
+            {
+                var historicalEntry = new AcademicalHistoryEntry(academicalHistoryEntryEntity.StudentId,
+                    academicalHistoryEntryEntity.Year,
+                    academicalHistoryEntryEntity.Discipline,
+                    academicalHistoryEntryEntity.Score);
+
+                academicalHistoryList.Add(historicalEntry);
+            }
+
+            var student = Student.Load(
+                studentEntity.Id,
+                studentEntity.Name,
+                studentEntity.Address,
+                studentEntity.PersonalDocument,
+                studentEntity.Telephone,
+                studentEntity.Email,
+                academicalHistoryList);
+
+            students.Add(student);
+        }
+
+        return students;
     }
 
     public async Task<string> CreateStudentAsync(Student student)
     {
-        // var studentEntity = new Infra.Database.SqlServer.Students.Entities.Student(
-        //     student.Id,
-        //     student.Name,
-        //     student.Address,
-        //     student.Telephone,
-        //     student.Email,
-        //     student.PersonalDocument);
         var studentEntity = new Infra.Database.SqlServer.Students.Entities.Student
         {
             Id = student.Id,
@@ -50,10 +76,30 @@ public class StudentRepository : IStudentRepository
 
     public async Task<Student?> GetStudentByIdAsync(string studentId)
     {
-        var studentEntity = await _dbContext.Students.FirstOrDefaultAsync(s => s.Id == studentId);
+        var studentEntity = await _dbContext
+            .Students
+            .FirstOrDefaultAsync(s => s.Id == studentId);
 
         if (studentEntity is null)
             return null;
+
+        var academicalHistoryEntry =
+            await _dbContext
+                .AcademicalHistory
+                .Where(ah => ah.StudentId == studentId)
+                .ToListAsync();
+
+        var academicalHistoryList = new List<AcademicalHistoryEntry>();
+
+        foreach (var academicalHistoryEntryEntity in academicalHistoryEntry)
+        {
+            var historicalEntry = new AcademicalHistoryEntry(academicalHistoryEntryEntity.StudentId,
+                academicalHistoryEntryEntity.Year,
+                academicalHistoryEntryEntity.Discipline,
+                academicalHistoryEntryEntity.Score);
+
+            academicalHistoryList.Add(historicalEntry);
+        }
 
         var student = Student.Load(
             studentEntity.Id,
@@ -61,7 +107,8 @@ public class StudentRepository : IStudentRepository
             studentEntity.Address,
             studentEntity.PersonalDocument,
             studentEntity.Telephone,
-            studentEntity.Email);
+            studentEntity.Email,
+            academicalHistoryList);
 
         return student;
     }
@@ -71,7 +118,7 @@ public class StudentRepository : IStudentRepository
         var entityToUpdate = await _dbContext.Students.FirstOrDefaultAsync(t => t.Id == studentId);
 
         if (entityToUpdate is null)
-            return null;
+            return string.Empty;
 
         entityToUpdate.Update(studentId, student);
         _dbContext.Students.Update(entityToUpdate);
@@ -79,5 +126,23 @@ public class StudentRepository : IStudentRepository
         await _dbContext.SaveChangesAsync();
 
         return studentId;
+    }
+
+    public async Task<bool> CreateAcademicalHistoryAsyncEntryAsync(Student student,
+        AcademicalHistoryEntry academicalHistoryEntry)
+    {
+        var academicalHistoryEntity = new Entities.AcademicalHistoryEntry
+        {
+            Id = academicalHistoryEntry.Id,
+            Score = academicalHistoryEntry.Score,
+            Year = academicalHistoryEntry.Year,
+            Discipline = academicalHistoryEntry.Discipline,
+            StudentId = student.Id
+        };
+
+        await _dbContext.AcademicalHistory.AddAsync(academicalHistoryEntity);
+        await _dbContext.SaveChangesAsync();
+
+        return true;
     }
 }
