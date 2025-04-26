@@ -1,5 +1,16 @@
 ﻿#FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS base
+
+# Disable the invariant mode (set in base image)
+ENV \
+    DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
+    LC_ALL=en_US.UTF-8 \
+    LANG=en_US.UTF-8
+
+RUN apk add --no-cache \
+    icu-data-full \
+    icu-libs
+
 USER $APP_UID
 WORKDIR /app
 EXPOSE 8080
