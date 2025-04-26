@@ -31,7 +31,7 @@ public class Program
             var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
         });
-        
+
         //Uso via variavel de ambiente (Double underscore para representar o nível): ConnectionStrings__DefaultConnection
         
         builder.Services.AddDbContext<AppDbContext>(options =>
@@ -58,16 +58,13 @@ public class Program
         }
 
         // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
 
+        app.UseSwagger();
+        app.UseSwaggerUI();
+        
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
-
 
         app.MapControllers();
 

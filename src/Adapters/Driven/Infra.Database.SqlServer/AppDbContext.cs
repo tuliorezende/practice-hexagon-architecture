@@ -20,13 +20,6 @@ public class AppDbContext : DbContext
     {
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer(
-            "Data Source=localhost,1433;Database=PocHexagonArchitecture;Integrated Security=false;User ID=sa;Password=Numsey@Password!;TrustServerCertificate=true");
-        base.OnConfiguring(optionsBuilder);
-    }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Course>()

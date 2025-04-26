@@ -1,17 +1,6 @@
 ﻿#FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS base
 
-# Disable the invariant mode (set in base image)
-ENV \
-    DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
-    LC_ALL=en_US.UTF-8 \
-    LANG=en_US.UTF-8
-
-RUN apk add --no-cache \
-    icu-data-full \
-    icu-libs
-
-USER $APP_UID
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
@@ -35,5 +24,27 @@ RUN dotnet publish "./PracticeHexagonArchitecture.API.csproj" -c $BUILD_CONFIGUR
 
 FROM base AS final
 WORKDIR /app
+
+# The following 2 lines are required for solving: 
+# "Globalization Invariant Mode is not supported" error.
+
+ENV \
+    DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
+    LC_ALL=en_US.UTF-8 \
+    LANG=en_US.UTF-8
+
+RUN apk add --no-cache \
+    icu-data-full \
+    icu-libs
+
 COPY --from=publish /app/publish .
+
+#RUN apt update
+#RUN apt upgrade -y
+#RUN apt install tzdata libicu72
+#RUN apk add --no-cache icu-libs icu-data-full
+
+
+USER $APP_UID
+
 ENTRYPOINT ["dotnet", "PracticeHexagonArchitecture.API.dll"]
