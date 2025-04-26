@@ -8,9 +8,6 @@
     depends_on:
       - sqldatabase
     environment:
-#      ConnectionStrings__DefaultConnection: "Server=host.docker.internal,1500;Database=PocHexagonArchitecture;User=sa;Password=Your_password123;"
-#      ConnectionStrings__DefaultConnection: "Data Source=host.docker.internal, 1433;Initial Catalog=PocHexagonArchitecture;User ID=sa;Password=Your_password123;"
-#      ConnectionStrings__DefaultConnection: "Data Source=sqldatabase,1433;Database=PocHexagonArchitecture;Integrated Security=false;User ID=sa;Password=Mssql!Passw0rd;TrustServerCertificate=True;"    
       ConnectionStrings__DefaultConnection: "Data Source=sqldatabase, 1433;Database=PocHexagonArchitecture;Integrated Security=false;User ID=sa;Password=Mssql!Passw0rd;TrustServerCertificate=true;"
     build:
       context: .
@@ -18,7 +15,7 @@
       target: final
 
   sqldatabase:
-    image: mcr.microsoft.com/mssql/server:2017-latest
+    image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: sqldatabase
     ports:
       - "1433:1433"
