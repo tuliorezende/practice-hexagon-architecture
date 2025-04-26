@@ -1,0 +1,21 @@
+﻿services:
+  practicehexagonarchitectureapi:
+    depends_on:
+      - sqlserver
+    image: practicehexagonarchitectureapi
+    build:
+      context: .
+      dockerfile: src/Adapters/Driving/PracticeHexagonArchitecture.API/Dockerfile
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Numsey@Password!"
+
+volumes:
+  mssql_data: { }
+  

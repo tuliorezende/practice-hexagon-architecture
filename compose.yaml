@@ -1,7 +1,0 @@
-﻿services:
-  practicehexagonarchitecture.api:
-    image: practicehexagonarchitecture.api
-    build:
-      context: .
-      dockerfile: src/Adapters/Driving/PracticeHexagonArchitecture.API/Dockerfile
-
