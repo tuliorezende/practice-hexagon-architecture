@@ -21,7 +21,7 @@ public class Course
 
     public Teacher Teacher { get; set; }
 
-    public List<ClassMaterialEntry> Materials { get; private set; }
+    public List<ClassMaterialEntry>? Materials { get; private set; }
 
     public Course(string name, string description, Discipline discipline, string year,
         DateTimeOffset startDate, DateTimeOffset endDate, TeacherDto teacherDto)
@@ -52,6 +52,28 @@ public class Course
 
     private Course()
     {
+    }
+
+    public static Course Load(string id,
+        string name,
+        string description,
+        Discipline discipline,
+        DateTimeOffset startDate,
+        DateTimeOffset endDate,
+        string? teacherId = null,
+        List<ClassMaterialEntry>? materials = null)
+    {
+        return new Course
+        {
+            Id = id,
+            Name = name,
+            Description = description,
+            Discipline = discipline,
+            StartDate = startDate,
+            EndDate = endDate,
+            TeacherId = teacherId,
+            Materials = materials
+        };
     }
 
     public Course DeepClone(string courseId, Course course)

@@ -42,4 +42,9 @@ public class CourseRepository : ICourseRepository
 
         return courseId;
     }
+
+    public async Task<string> CreateClassMaterialEntryAsync(Course course, ClassMaterialEntry classMaterialEntry)
+    {
+        throw new NotImplementedException();
+    }
 }

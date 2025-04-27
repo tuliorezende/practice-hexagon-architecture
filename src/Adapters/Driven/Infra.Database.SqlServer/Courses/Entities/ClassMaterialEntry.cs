@@ -2,7 +2,7 @@ namespace Infra.Database.SqlServer.Courses.Entities;
 
 public class ClassMaterialEntry
 {
-    public string Id { get; private set; }
+    public string Id { get; set; }
 
     public string Name { get; set; }
 

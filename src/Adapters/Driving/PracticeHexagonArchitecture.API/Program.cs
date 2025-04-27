@@ -9,6 +9,7 @@ using Infra.Database.Memory.Courses.Repositories;
 using Infra.Database.Memory.Students.Repositories;
 using Infra.Database.SqlServer;
 using Microsoft.EntityFrameworkCore;
+using CourseRepository = Infra.Database.SqlServer.Courses.Repositories.CourseRepository;
 using StudentRepository = Infra.Database.SqlServer.Students.Repositories.StudentRepository;
 using TeacherRepository = Infra.Database.SqlServer.Courses.Repositories.TeacherRepository;
 
@@ -33,7 +34,7 @@ public class Program
         });
 
         //Uso via variavel de ambiente (Double underscore para representar o nível): ConnectionStrings__DefaultConnection
-        
+
         builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -47,6 +48,7 @@ public class Program
 
         builder.Services.AddTransient<ICourseManager, CourseManager>();
         builder.Services.AddTransient<ICourseRepository, CourseRepository>();
+        // builder.Services.AddTransient<ICourseRepository, CourseRepository>();
 
         var app = builder.Build();
 
@@ -61,7 +63,7 @@ public class Program
 
         app.UseSwagger();
         app.UseSwaggerUI();
-        
+
         app.UseHttpsRedirection();
 
         app.UseAuthorization();

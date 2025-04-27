@@ -71,7 +71,7 @@ public class CourseManager : ICourseManager
 
         course.AddMaterial(classMaterialEntry);
 
-        await _courseRepository.UpdateCourseAsync(courseId, course);
+        await _courseRepository.CreateClassMaterialEntryAsync(course, classMaterialEntry);
         return true;
     }
 

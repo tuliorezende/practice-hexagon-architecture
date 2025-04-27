@@ -20,7 +20,18 @@ public class Course
 
     public Teacher Teacher { get; set; }
 
-    public List<ClassMaterialEntry> Materials { get; set; }
+    public List<ClassMaterialEntry> Materials { get; set; } = new List<ClassMaterialEntry>();
+
+    public void Update(string courseId, Domain.Courses.Entities.Course course)
+    {
+        this.Id = courseId;
+        this.Name = course.Name;
+        this.Description = course.Description;
+        this.Discipline = course.Discipline;
+        this.StartDate = course.StartDate;
+        this.EndDate = course.EndDate;
+        this.TeacherId = course.TeacherId;
+    }
 
     public Course()
     {

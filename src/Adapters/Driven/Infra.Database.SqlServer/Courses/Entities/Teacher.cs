@@ -19,6 +19,11 @@ public class Teacher
         this.Discipline = teacher.Discipline;
     }
 
+    public Teacher()
+    {
+        
+    }
+    
     // public Teacher(string id, string name, Discipline discipline)
     // {
     //     this.Id = id;

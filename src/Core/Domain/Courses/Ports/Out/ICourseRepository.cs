@@ -11,4 +11,6 @@ public interface ICourseRepository
     Task<Course?> GetCourseByIdAsync(string courseId);
 
     Task<string> UpdateCourseAsync(string courseId, Course course);
+    
+    Task<string> CreateClassMaterialEntryAsync(Course course, ClassMaterialEntry classMaterialEntry);
 }

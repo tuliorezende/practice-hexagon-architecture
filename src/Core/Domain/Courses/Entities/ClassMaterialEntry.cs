@@ -28,4 +28,41 @@ public class ClassMaterialEntry
         this.Description = entry.Description;
         this.Url = entry.Url;
     }
+
+    public ClassMaterialEntry()
+    {
+    }
+    
+    public static ClassMaterialEntry Load(string id, string name, string description, string url)
+    {
+        return new ClassMaterialEntry
+        {
+            Id = id,
+            Name = name,
+            Description = description,
+            Url = url,
+        };
+    }
+    
+    // public static ClassMaterialEntry Load(string id,
+    //     string name,
+    //     string description,
+    //     Discipline discipline,
+    //     DateTimeOffset startDate,
+    //     DateTimeOffset endDate,
+    //     string? teacherId = null,
+    //     List<ClassMaterialEntry>? materials = null)
+    // {
+    //     return new Course
+    //     {
+    //         Id = id,
+    //         Name = name,
+    //         Description = description,
+    //         Discipline = discipline,
+    //         StartDate = startDate,
+    //         EndDate = endDate,
+    //         TeacherId = teacherId,
+    //         Materials = materials
+    //     };
+    // }
 }
