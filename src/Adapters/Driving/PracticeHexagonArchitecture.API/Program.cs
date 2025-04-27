@@ -9,6 +9,7 @@ using Infra.Database.Memory.Courses.Repositories;
 using Infra.Database.Memory.Students.Repositories;
 using Infra.Database.SqlServer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using CourseRepository = Infra.Database.SqlServer.Courses.Repositories.CourseRepository;
 using StudentRepository = Infra.Database.SqlServer.Students.Repositories.StudentRepository;
 using TeacherRepository = Infra.Database.SqlServer.Courses.Repositories.TeacherRepository;
@@ -50,6 +51,21 @@ public class Program
         builder.Services.AddTransient<ICourseRepository, CourseRepository>();
         // builder.Services.AddTransient<ICourseRepository, CourseRepository>();
 
+        builder.Services.AddSwaggerGen(s =>
+        {
+            s.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Title = "Pegasus School API",
+                Version = "v1",
+                Description = "API para gerenciamento de cursos e alunos da Pegasus School",
+                Contact = new OpenApiContact
+                {
+                    Name = "Tulio (Testing Purposes)",
+                    Url = new Uri("https://github.com/tuliorezende/practice-hexagon-architecture")
+                }
+            });
+        });
+
         var app = builder.Build();
 
         // Execute migrations automatically on app startup
@@ -62,7 +78,12 @@ public class Program
         // Configure the HTTP request pipeline.
 
         app.UseSwagger();
-        app.UseSwaggerUI();
+        app.UseSwaggerUI(s =>
+        {
+            s.SwaggerEndpoint("../swagger/v1/swagger.json", "Pegasus School API");
+            s.RoutePrefix = string.Empty;
+            s.DocumentTitle = "Pegasus API | Swagger";
+        });
 
         app.UseHttpsRedirection();
 
