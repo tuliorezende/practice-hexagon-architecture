@@ -9,6 +9,12 @@
       - sqldatabase
     environment:
       ConnectionStrings__DefaultConnection: "Data Source=sqldatabase, 1433;Database=PocHexagonArchitecture;Integrated Security=false;User ID=sa;Password=Mssql!Passw0rd;TrustServerCertificate=true;"
+    restart: on-failure:5
+    deploy:
+      resources:
+        limits:
+          memory: 300MB
+          cpus: 0.4
     build:
       context: .
       dockerfile: src/Adapters/Driving/PracticeHexagonArchitecture.API/Dockerfile
@@ -22,9 +28,13 @@
     environment:
       ACCEPT_EULA: 'Y'
       MSSQL_SA_PASSWORD: 'Mssql!Passw0rd'
-    restart: always
+    restart: unless-stopped
     volumes:
       - mssql_data:/var/opt/mssql
+    deploy:
+      resources:
+        limits:
+          memory: 1GB
 
 volumes:
   mssql_data: { }

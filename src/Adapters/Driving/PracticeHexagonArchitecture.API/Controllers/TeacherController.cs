@@ -21,7 +21,7 @@ public class TeacherController : ControllerBase
     #region Teacher Operations
 
     /// <summary>
-    /// List all Students
+    /// List all Teachers
     /// </summary>
     /// <param name="skip">Elements to Skip</param>
     /// <param name="take">Elements quantity to return</param>
