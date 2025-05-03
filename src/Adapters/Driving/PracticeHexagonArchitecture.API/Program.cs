@@ -66,6 +66,8 @@ public class Program
             });
         });
 
+        builder.Services.AddHealthChecks().AddDbContextCheck<AppDbContext>();
+        
         var app = builder.Build();
 
         // Execute migrations automatically on app startup
@@ -90,6 +92,8 @@ public class Program
         app.UseAuthorization();
 
         app.MapControllers();
+        
+        app.MapHealthChecks("/healthz");
 
         app.Run();
     }

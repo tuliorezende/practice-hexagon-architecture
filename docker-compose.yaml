@@ -15,6 +15,12 @@
         limits:
           memory: 300MB
           cpus: 0.4
+    healthcheck:
+      test: curl --fail http://localhost:8080/ || exit 1
+      interval: 40s
+      timeout: 30s
+      retries: 3
+      start_period: 60s
     build:
       context: .
       dockerfile: src/Adapters/Driving/PracticeHexagonArchitecture.API/Dockerfile
