@@ -6,6 +6,7 @@ Project to do some exercises on Hexagon Architecture.
 - Adapters/Driving/API
   - Core/Application
   - Adapters/Driven/Infra.Database.InMemory
+  - Adapters/Driven/Infra.Database.SqlServer 
   - Adapters/Driven/Infra.Email
 
 OBS: Projeto da API fazendo referencias a outras camadas para injeções de Dependencia
@@ -13,6 +14,7 @@ OBS: Projeto da API fazendo referencias a outras camadas para injeções de Depe
 -----
 ## Domain
 
+### Referencia de projeto
 - Core/Domain
   - N/A
 
@@ -21,30 +23,33 @@ OBS2: Provê as interfaces (PORTAS)
 
 ### Pastas
 
-- `<Domain>\Dtos`: Objetos para trafego entre camadas e uso nas requests
-- `<Domain>\Entities`: Implementação das entidades como um todo
-- `<Domain>\Ports\In`: Criação das interfaces a serem usadas pela `Application`
-- `<Domain>\Ports\Out`: Criação das interfaces a serem usadas por Repositories (Projetos na pasta `Driven`)
-- `<Domain>\ValueObjects`: Objetos de valor a serem usados para composição das entidades
-
-
+- `<Domain>\<UseCaseName>\Dtos`: Objetos para trafego entre camadas e uso nas requests
+- `<Domain>\<UseCaseName>\Entities`: Implementação das entidades como um todo
+- `<Domain>\<UseCaseName>\Ports\In`: Criação das interfaces a serem usadas pela `Application`
+- `<Domain>\<UseCaseName>\Ports\Out`: Criação das interfaces a serem usadas por Repositories (Projetos na pasta `Driven`)
+- `<Domain>\<UseCaseName>\ValueObjects`: Objetos de valor a serem usados para composição das entidades
 
 -----
 ## Application
 
+### Referencia de projeto
 - Core/Application
   - Core/Domain
 
-OBS: Referencia para ter acesso as interfaces (PORTAS) para criação dos services/usecases (ADAPTERS)
+OBS: Referência para ter acesso as interfaces (PORTAS) para criação dos services/usecases (ADAPTERS)
 
 ### Pastas
-- `Services`: Implementação "fisica" das interaces do projeto de `Domain`
+- `<UseCaseName>\Services`: Implementação "fisica" das interaces do projeto de `Domain`
 
 -----
 
 ## Adapters
 
+### Referencia de projeto
 - Adapters/Driven/Infra.Database.InMemory
+  - Core/Domain
+
+- Adapters/Driven/Infra.Database.SqlServer
   - Core/Domain
 
 OBS: Referencia para ter acesso as interfaces (PORTAS) para criação dos repositories (ADAPTERS)
@@ -55,10 +60,10 @@ OBS: Referencia para ter acesso as interfaces (PORTAS) para criação dos reposi
 OBS: Referencia para ter acesso as interfaces (PORTAS) para criação dos recipients (ADAPTERS)
 
 ### Pastas
-- `Repositories`: Criação de acesso ao banco
-- `Operations`: Operações que não precisam de repostas e etc
+- `<UseCaseName>\Repositories`: Criação de acesso ao banco
+- `<UseCaseName>\Operations`: Operações que não precisam de repostas e etc
 
-### Pasta Entities
+### Pasta <UseCaseName>\Entities
 Caso utilize uma estrutura de banco (EX: Entity Framework) pode-se criar as classes de tabela (replicando o conteúdo da domain)
 
 -----
