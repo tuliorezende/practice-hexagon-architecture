@@ -1,0 +1,16 @@
+using Domain.Students.Entities;
+
+namespace Domain.Students.Ports.Out;
+
+public interface IStudentRepository
+{
+    Task<List<Student>> GetStudentsAsync(int skip = 0, int take = 10);
+
+    Task<string> CreateStudentAsync(Student student);
+
+    Task<Student?> GetStudentByIdAsync(string studentId);
+
+    Task<string> UpdateStudentAsync(string studentId, Student student);
+
+    Task<bool> CreateAcademicalHistoryAsyncEntryAsync(Student student, AcademicalHistoryEntry academicalHistoryEntry);
+}

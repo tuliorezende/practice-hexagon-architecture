@@ -1,0 +1,47 @@
+﻿services:
+
+  practicehexagonarchitectureapi:
+    image: practicehexagonarchitectureapi
+    ports:
+      - '8080:8080'
+      - '8081:8081'
+    depends_on:
+      - sqldatabase
+    environment:
+      ConnectionStrings__DefaultConnection: "Data Source=sqldatabase, 1433;Database=PocHexagonArchitecture;Integrated Security=false;User ID=sa;Password=Mssql!Passw0rd;TrustServerCertificate=true;"
+    restart: on-failure:5
+    deploy:
+      resources:
+        limits:
+          memory: 300MB
+          cpus: 0.4
+    healthcheck:
+      test: curl --fail http://localhost:8080/ || exit 1
+      interval: 40s
+      timeout: 30s
+      retries: 3
+      start_period: 60s
+    build:
+      context: .
+      dockerfile: src/Adapters/Driving/PracticeHexagonArchitecture.API/Dockerfile
+      target: final
+
+  sqldatabase:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqldatabase
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: 'Y'
+      MSSQL_SA_PASSWORD: 'Mssql!Passw0rd'
+    restart: unless-stopped
+    volumes:
+      - mssql_data:/var/opt/mssql
+    deploy:
+      resources:
+        limits:
+          memory: 1GB
+
+volumes:
+  mssql_data: { }
+    
