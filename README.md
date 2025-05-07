@@ -11,6 +11,8 @@ Project to do some exercises on Hexagon Architecture.
 
 OBS: Projeto da API fazendo referencias a outras camadas para injeções de Dependencia
 
+#### Ideia: Criar pastas de UseCase
+
 -----
 ## Domain
 
@@ -40,6 +42,8 @@ OBS: Referência para ter acesso as interfaces (PORTAS) para criação dos servi
 
 ### Pastas
 - `<UseCaseName>\Services`: Implementação "fisica" das interaces do projeto de `Domain`
+
+#### Ideia: Criar pastas de UseCase
 
 -----
 
